@@ -1,19 +1,23 @@
-box: golang
+box:
+    id: golang
+    ports:
+        - "5000"
+
 dev:
-  steps:
-    - internal/watch:
-        code: |
-          go build ./...
-          ./source
-        reload: true
+    steps:
+        - internal/watch:
+            code: |
+                go build ./...
+                ./source
+            reload: true
+
 # Build definition
 build:
-  # The steps that will be executed on build
-  steps:
+    steps:
 
     - script:
         name: hello-world
-        code: echo "Hello World!"
+        code: echo $HELLO_MESSAGE
 
     # golint step!
     - wercker/golint
@@ -22,10 +26,25 @@ build:
     - script:
         name: go build
         code: |
-          go build ./...
+            go build ./...
 
     # Test the project
     - script:
         name: go test
         code: |
-          go test ./...
+            go test ./...
+
+    - internal/docker-scratch-push:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+        cmd: /fun
+        tag: $WERCKER_GIT_COMMIT
+        repository: rikgibson/fun-with-golang
+#        registry: https://registry.hub.docker.com
+
+hello-world:
+    steps:
+
+    - script:
+        name: hello-world
+        code: echo $HELLO_MESSAGE

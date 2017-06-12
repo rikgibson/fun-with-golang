@@ -6,16 +6,39 @@ import (
 	"net/http"
 )
 
-func CityHandler(res http.ResponseWriter, req *http.Request) {
-	data, _ := json.Marshal("{'cities':'San Francisco, Amsterdam, Berlin, New York','Tokyo'}")
+type citiesResponse struct {
+	cities []string `json:"cities"`
+}
+
+func cityHandler(res http.ResponseWriter, req *http.Request) {
+
+	responseData := &citiesResponse{
+		cities: []string{
+			"Amsterdam",
+			"Bristol",
+			"London",
+			"Bangkok",
+			"San Francisco",
+		},
+	}
+
+	data, _ := json.MarshalIndent(responseData, "", "  ")
 	res.Header().Set("Content-Type", "application/json; charset=utf-8")
 	res.Write(data)
 }
 
+func defaultHandler(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Content-Type", "text/plain; charset=utf-8")
+
+	res.Write([]byte("Hello World!"))
+}
+
 func main() {
-	http.HandleFunc("/cities.json", CityHandler)
+	log.Println("Listening on this host: http://localhost:5000")
+	http.HandleFunc("/", defaultHandler)
+	http.HandleFunc("/cities", cityHandler)
 	err := http.ListenAndServe(":5000", nil)
 	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
+		log.Fatal("Unable to listen on port 5000 : ", err)
 	}
 }
