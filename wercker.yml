@@ -4,6 +4,7 @@ box:
         - "5000"
 
 dev:
+
     steps:
         - internal/watch:
             code: |
@@ -14,10 +15,6 @@ dev:
 # Build definition
 build:
     steps:
-
-    - script:
-        name: hello-world
-        code: echo $HELLO_MESSAGE
 
     # golint step!
     - wercker/golint
@@ -40,7 +37,6 @@ build:
         cmd: /fun
         tag: $WERCKER_GIT_COMMIT
         repository: rikgibson/fun-with-golang
-#        registry: https://registry.hub.docker.com
 
 hello-world:
     steps:

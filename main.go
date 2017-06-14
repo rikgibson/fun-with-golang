@@ -7,13 +7,13 @@ import (
 )
 
 type citiesResponse struct {
-	cities []string `json:"cities"`
+	Cities []string `json:"cities"` // Cities capitalised to export it, otherwise json.Marshal() will ignore it.
 }
 
 func cityHandler(res http.ResponseWriter, req *http.Request) {
 
 	responseData := &citiesResponse{
-		cities: []string{
+		Cities: []string{
 			"Amsterdam",
 			"Bristol",
 			"London",
