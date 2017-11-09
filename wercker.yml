@@ -31,7 +31,7 @@ build:
         code: |
             go test ./...
 
-    - internal/docker-scratch-push:
+    - internal/docker-push:
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
         cmd: /main
