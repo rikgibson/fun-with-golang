@@ -24,6 +24,12 @@ build:
         code: |
             go build ./...
 
+    # Test the project
+    - script:
+        name: go test
+        code: |
+            go test ./...
+
     - script:
         name: ls-wercker-root
         code: |
@@ -34,16 +40,25 @@ build:
         code: |
             echo WERCKER_SOURCE_DIR=$WERCKER_SOURCE_DIR; ls -ls $WERCKER_SOURCE_DIR
         
-    # Test the project
     - script:
-        name: go test
+        name: ls-wercker-output-dir-1
         code: |
-            go test ./...
-
+            echo WERCKER_OUTPUT_DIR=$WERCKER_OUTPUT_DIR; ls -ls $WERCKER_OUTPUT_DIR
+        
+    - script:
+        name: copy-output
+        code: |
+            mv source $WERCKER_OUTPUT_DIR/fun-with-golang
+        
+    - script:
+        name: ls-wercker-output-dir-2
+        code: |
+            echo WERCKER_OUTPUT_DIR=$WERCKER_OUTPUT_DIR; ls -ls $WERCKER_OUTPUT_DIR
+        
     - internal/docker-push:
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
-        cmd: /main
+        cmd: /fun-with-golang
         tag: latest
         repository: rikgibson/fun-with-golang
 
