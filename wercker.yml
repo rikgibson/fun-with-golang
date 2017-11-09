@@ -28,7 +28,7 @@ build:
     - script:
         name: ls
         code: |
-            echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT
+            echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT; cat source
         
     # Test the project
     - script:
