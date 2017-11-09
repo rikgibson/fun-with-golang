@@ -25,6 +25,13 @@ build:
         code: |
             go build ./...
 
+    - script:
+        name: hello-world
+        echo: WERCKER_ROOT=$WERCKER_ROOT
+        code: ls $WERCKER_ROOT
+        echo: WERCKER_SOURCE_DIR=$WERCKER_SOURCE_DIR
+        code: ls $WERCKER_SOURCE_DIR
+        
     # Test the project
     - script:
         name: go test
