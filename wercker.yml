@@ -31,6 +31,13 @@ build:
         code: |
             go test ./...
 
+    - internal/docker-push:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+        cmd: /main
+        tag: latest
+        repository: rikgibson/fun-with-golang
+
 push-docker:
     steps:
         - internal/docker-push:
