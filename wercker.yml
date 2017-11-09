@@ -9,7 +9,6 @@ dev:
         - internal/watch:
             code: |
                 go build ./...
-                ./source
             reload: true
 
 # Build definition
