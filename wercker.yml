@@ -25,9 +25,14 @@ build:
             go build ./...
 
     - script:
-        name: ls
+        name: ls-wercker-root
         code: |
-            echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT; cat source
+            echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT
+        
+    - script:
+        name: ls-wercker-source-dir
+        code: |
+            echo WERCKER_SOURCE_DIR=$WERCKER_SOURCE_DIR; ls -ls $WERCKER_SOURCE_DIR
         
     # Test the project
     - script:
