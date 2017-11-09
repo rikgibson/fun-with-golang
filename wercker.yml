@@ -34,7 +34,7 @@ build:
     - internal/docker-scratch-push:
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
-        cmd: /fun
+        cmd: /main
         tag: latest
         repository: rikgibson/fun-with-golang
 
