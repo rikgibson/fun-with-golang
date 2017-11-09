@@ -50,7 +50,7 @@ push-docker:
         - internal/docker-push:
             username: $DOCKERHUB_USERNAME
             password: $DOCKERHUB_PASSWORD
-            entrypoint: /pipeline/output/fun-with-golang
+            cmd: /pipeline/output/fun-with-golang
             tag: latest
             repository: rikgibson/fun-with-golang
             ports: "5000"
@@ -60,7 +60,7 @@ push-scratch-docker:
         - internal/docker-scratch-push:
             username: $DOCKERHUB_USERNAME
             password: $DOCKERHUB_PASSWORD
-            entrypoint: /fun-with-golang
+            cmd: /fun-with-golang
             tag: latest
             repository: rikgibson/fun-with-golang-scratch
             ports: "5000"
