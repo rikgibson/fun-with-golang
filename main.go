@@ -34,6 +34,7 @@ func defaultHandler(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	log.Println("Hello World!")
 	log.Println("Listening on this host: http://localhost:5000")
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/cities", cityHandler)

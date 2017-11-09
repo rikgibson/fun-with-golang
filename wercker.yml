@@ -35,7 +35,7 @@ build:
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
         cmd: /fun
-        tag: $WERCKER_GIT_COMMIT
+        tag: latest
         repository: rikgibson/fun-with-golang
 
 hello-world:
