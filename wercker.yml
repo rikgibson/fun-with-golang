@@ -23,7 +23,7 @@ build:
     - script:
         name: go build
         code: |
-            go build -o fun-with-golang ./...
+            -CGO_ENABLED=0 go build -a -o fun-with-golang ./...
 
     # Test the project
     - script:
