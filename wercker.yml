@@ -55,6 +55,7 @@ build:
         ports: "5000"
 
 push-scratch-docker:
+    box: golang
     steps:
         - internal/docker-scratch-push:
             username: $DOCKERHUB_USERNAME
