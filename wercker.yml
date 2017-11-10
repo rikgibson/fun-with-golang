@@ -52,7 +52,7 @@ build:
         cmd: /pipeline/output/fun-with-golang
         tag: latest
         repository: rikgibson/fun-with-golang
-            ports: "5000"
+        ports: "5000"
         
 push-docker:
     steps:
