@@ -53,23 +53,13 @@ build:
         tag: latest
         repository: rikgibson/fun-with-golang
         ports: "5000"
-        
-push-docker:
-    steps:
-        - internal/docker-push:
-            username: $DOCKERHUB_USERNAME
-            password: $DOCKERHUB_PASSWORD
-            cmd: /pipeline/source/fun-with-golang
-            tag: latest
-            repository: rikgibson/fun-with-golang
-            ports: "5000"
 
 push-scratch-docker:
     steps:
         - internal/docker-scratch-push:
             username: $DOCKERHUB_USERNAME
             password: $DOCKERHUB_PASSWORD
-            cmd: /fun-with-golang
+            cmd: ./fun-with-golang
             tag: latest
             repository: rikgibson/fun-with-golang-scratch
             ports: "5000"
