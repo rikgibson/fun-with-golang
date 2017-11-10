@@ -36,15 +36,23 @@ build:
         code: |
             echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT
         
-    # - script:
-    #     name: copy-output
-    #     code: |
-    #         mv fun-with-golang $WERCKER_OUTPUT_DIR
+    - script:
+        name: copy-output
+        code: |
+            mv fun-with-golang $WERCKER_OUTPUT_DIR
         
     - script:
         name: ls-wercker-output-dir
         code: |
             echo WERCKER_OUTPUT_DIR=$WERCKER_OUTPUT_DIR; ls -ls $WERCKER_OUTPUT_DIR
+
+    - internal/docker-push:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+        cmd: /pipeline/output/fun-with-golang
+        tag: latest
+        repository: rikgibson/fun-with-golang
+            ports: "5000"
         
 push-docker:
     steps:
