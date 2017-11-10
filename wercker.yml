@@ -9,6 +9,7 @@ dev:
         - internal/watch:
             code: |
                 go build ./...
+                ./source
             reload: true
 
 # Build definition
@@ -35,10 +36,10 @@ build:
         code: |
             echo WERCKER_ROOT=$WERCKER_ROOT; ls -ls $WERCKER_ROOT
         
-    - script:
-        name: copy-output
-        code: |
-            mv fun-with-golang $WERCKER_OUTPUT_DIR
+    # - script:
+    #     name: copy-output
+    #     code: |
+    #         mv fun-with-golang $WERCKER_OUTPUT_DIR
         
     - script:
         name: ls-wercker-output-dir
