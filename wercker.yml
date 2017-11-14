@@ -53,9 +53,9 @@ build:
         tag: latest
         repository: rikgibson/fun-with-golang
         ports: "5000"
+        registry: https://registry.docker.com/v2
 
 push-scratch-docker:
-    box: golang
     steps:
         - script:
             name: ls-wercker-root
@@ -69,6 +69,7 @@ push-scratch-docker:
             tag: latest
             repository: rikgibson/fun-with-golang-scratch
             ports: "5000"
+            registry: https://registry.docker.com/v2
 
 hello-world:
     steps:
